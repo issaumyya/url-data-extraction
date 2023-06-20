@@ -129,6 +129,13 @@ if st.button("Scrape URLs"):
             "Age of Property": age_of_property
         })
 
+        # Display property values
         st.dataframe(property_data)
+
+        # Save DataFrame to Excel if Excel button is clicked
+        if st.button("Save as Excel"):
+            excel_file_path = f"{excel_file_name}.xlsx"
+            property_data.to_excel(excel_file_path, index=False)
+            st.success(f"Property values saved to {excel_file_path}!")
     else:
-        st.warning("No URLs were scraped.")
+        st.warning("No Property URLs were found.")
