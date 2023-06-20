@@ -2,3 +2,4 @@ streamlit==0.11.0
 pandas==0.23.0
 requests==2.25.1
 beautifulsoup4==4.9.3
+pip==22.0.3
