@@ -35,12 +35,8 @@ search_button = st.button("Search")
 
 # Check if the search button is clicked and perform the search action
 if search_button:
-    c = search_on_makaan(search_query)
-    # Scrape the URLs
-    scraped_urls = scrape_url(c)
-
+    scraped_urls = scrape_url(search_on_makaan(search_query))
     if scraped_urls:
-        # Print property values for the first 100 entries
         st.subheader("Property Values:")
         
         bedroom = []
