@@ -35,9 +35,9 @@ search_button = st.button("Search")
 
 # Check if the search button is clicked and perform the search action
 if search_button:
-    custom_url = search_on_makaan(search_query)
+    c = search_on_makaan(search_query)
     # Scrape the URLs
-    scraped_urls = scrape_url(custom_url)
+    scraped_urls = scrape_url(c)
 
     if scraped_urls:
         # Print property values for the first 100 entries
