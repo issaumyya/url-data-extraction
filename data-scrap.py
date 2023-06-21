@@ -19,12 +19,11 @@ st.set_page_config(
     page_title="Hello!",
     page_icon="👋",
 )
-st.title("Property Values from Custom URL")
-st.write("Enter a custom URL from makaan.com to scrape property values:")
+st.title("Extract Latest Real Estate!")
 
 def search_on_makaan(query):
     query = query.lower().replace(" ", "-")  # Convert spaces to hyphens and lowercase the query
-    search_url = f"https://www.makaan.com/{query}residential-property/buy-property-in-{query}city"
+    search_url = f"https://www.makaan.com/listings?sortBy=date-desc&listingType=buy/{query}residential-property/buy-property-in-{query}city"
     st.write("Search URL:", search_url)  # Add this line for debugging
     return search_url
 
