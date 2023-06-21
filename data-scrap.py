@@ -69,11 +69,11 @@ if search_button:
             new1 = soup.find('td', id='New/Resale')
             new.append(new1.text if new1 else np.nan)
 
-            neg1 = soup.find('td', id='Price Negotiable')
-            negotiable.append(neg1.text if neg1 else np.nan)
+            #neg1 = soup.find('td', id='Price Negotiable')
+            #negotiable.append(neg1.text if neg1 else np.nan)
 
-            sec1 = soup.find('td', id='Security Deposit')
-            sec_deposit.append(sec1.text if sec1 else np.nan)
+            #sec1 = soup.find('td', id='Security Deposit')
+            #sec_deposit.append(sec1.text if sec1 else np.nan)
 
             fac1 = soup.find('td', id='Facing')
             facing.append(fac1.text if fac1 else np.nan)
@@ -88,8 +88,8 @@ if search_button:
             price1 = soup.find('span', class_='price')
             price.append(price1.text if price1 else np.nan)
 
-            car1 = soup.find('td', id='Carpet area')
-            carpet_sq_ft.append(car1.text if car1 else np.nan)
+            #car1 = soup.find('td', id='Carpet area')
+            #carpet_sq_ft.append(car1.text if car1 else np.nan)
 
             bath1 = soup.find('td', id='Bathrooms')
             bathroom.append(bath1.text if bath1 else np.nan)
@@ -97,8 +97,8 @@ if search_button:
             booking1 = soup.find('td', id='Booking Amount')
             booking_amt.append(booking1.text if booking1 else np.nan)
 
-            floor1 = soup.find('td', id='Floor')
-            floor_no.append(floor1.text.split(' ')[0] if floor1 else np.nan)
+            #floor1 = soup.find('td', id='Floor')
+            #floor_no.append(floor1.text.split(' ')[0] if floor1 else np.nan)
 
             constr1 = soup.find('td', id='Status')
             construction_status.append(constr1.text if constr1 else np.nan)
@@ -106,25 +106,19 @@ if search_button:
             subloc = soup.find('span', class_='ib loc-name')
             sub_loc.append(subloc.text if subloc else np.nan)
 
-            age = soup.find('td', id='Age of Property')
-            age_of_property.append(age.text if age else np.nan)
+            #age = soup.find('td', id='Age of Property')
+            #age_of_property.append(age.text if age else np.nan)
 
         property_data = pd.DataFrame({
             "Locality": sub_loc,
             "Bedroom": bedroom,
             "Sq Ft": sq_ft,
             "New/Resale": new,
-            "Negotiable": negotiable,
-            "Security Deposit": sec_deposit,
             "Facing": facing,
             "Status": status,
             "Price": price,
-            "Carpet Sq Ft": carpet_sq_ft,
             "Bathroom": bathroom,
-            "Booking Amount": booking_amt,
-            "Floor No": floor_no,
-            "Construction Status": construction_status,
-            "Age of Property": age_of_property
+            "Construction Status": construction_status
         })
 
         # Display property values
