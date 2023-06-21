@@ -59,7 +59,7 @@ if search_button:
         sub_loc = []
         age_of_property = []
 
-        for u in scraped_urls[:100]:
+        for u in scraped_urls:
             result = requests.get(u).text
             soup = BeautifulSoup(result, 'html.parser')
 
