@@ -37,6 +37,7 @@ search_button = st.button("Search")
 if search_button:
     scraped_urls = scrape_url(search_on_makaan(search_query))
     if scraped_urls:
+        st.write(scraped_urls)
         st.subheader("Property Values:")
         
         bedroom = []
@@ -139,5 +140,3 @@ if search_button:
             st.success(f"Property values saved to {excel_file_path}!")
     else:
         st.warning("No URLs were scraped.")
- else:
-    st.warning("Coudnt find any urls")
