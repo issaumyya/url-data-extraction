@@ -15,6 +15,10 @@ def scrape_url(custom_url):
     return urll
 
 # Streamlit UI
+st.set_page_config(
+    page_title="Hello!",
+    page_icon="👋",
+)
 st.title("Property Values from Custom URL")
 st.write("Enter a custom URL to scrape property values:")
 
