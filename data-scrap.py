@@ -25,6 +25,7 @@ st.write("Enter a custom URL from makaan.com to scrape property values:")
 def search_on_makaan(query):
     query = query.replace(" ", "-").lower()  # Convert spaces to hyphens and lowercase the query
     search_url = f"https://www.makaan.com/{query}-property"
+    print("Search URL:", search_url)  # Add this line for debugging
     return search_url
 
 # Create a search bar in the Streamlit app
