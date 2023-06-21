@@ -78,12 +78,12 @@ if search_button:
             fac1 = soup.find('td', id='Facing')
             facing.append(fac1.text if fac1 else np.nan)
 
-            fur = soup.find('div', class_='kd-wrap js-list-wrap')
-            if fur:
-                fur1 = fur.find('td', id='Status')
-                status.append(fur1.text if fur1 else np.nan)
-            else:
-                status.append(np.nan)
+            #fur = soup.find('div', class_='kd-wrap js-list-wrap')
+            #if fur:
+                #fur1 = fur.find('td', id='Status')
+                #status.append(fur1.text if fur1 else np.nan)
+            #else:
+                #status.append(np.nan)
 
             price1 = soup.find('span', class_='price')
             price.append(price1.text if price1 else np.nan)
@@ -91,8 +91,8 @@ if search_button:
             #car1 = soup.find('td', id='Carpet area')
             #carpet_sq_ft.append(car1.text if car1 else np.nan)
 
-            bath1 = soup.find('td', id='Bathrooms')
-            bathroom.append(bath1.text if bath1 else np.nan)
+            #bath1 = soup.find('td', id='Bathrooms')
+            #bathroom.append(bath1.text if bath1 else np.nan)
 
             booking1 = soup.find('td', id='Booking Amount')
             booking_amt.append(booking1.text if booking1 else np.nan)
@@ -100,8 +100,8 @@ if search_button:
             #floor1 = soup.find('td', id='Floor')
             #floor_no.append(floor1.text.split(' ')[0] if floor1 else np.nan)
 
-            constr1 = soup.find('td', id='Status')
-            construction_status.append(constr1.text if constr1 else np.nan)
+            #constr1 = soup.find('td', id='Status')
+            #construction_status.append(constr1.text if constr1 else np.nan)
 
             subloc = soup.find('span', class_='ib loc-name')
             sub_loc.append(subloc.text if subloc else np.nan)
@@ -111,14 +111,12 @@ if search_button:
 
         property_data = pd.DataFrame({
             "Locality": sub_loc,
+            "Price": price,
             "Bedroom": bedroom,
             "Sq Ft": sq_ft,
-            "New/Resale": new,
             "Facing": facing,
-            "Status": status,
-            "Price": price,
-            "Bathroom": bathroom,
-            "Construction Status": construction_status
+            "New/Resale": new,
+            "Property URL" : scraped_urls
         })
 
         # Display property values
