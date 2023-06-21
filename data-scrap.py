@@ -66,8 +66,8 @@ if search_button:
             sq_ft1 = soup.find('span', class_='size')
             sq_ft.append(sq_ft1.text if sq_ft1 else np.nan)
 
-            new1 = soup.find('td', id='New/Resale')
-            new.append(new1.text if new1 else np.nan)
+            #new1 = soup.find('td', id='New/Resale')
+            #new.append(new1.text if new1 else np.nan)
 
             #neg1 = soup.find('td', id='Price Negotiable')
             #negotiable.append(neg1.text if neg1 else np.nan)
@@ -115,7 +115,6 @@ if search_button:
             "Bedroom": bedroom,
             "Sq Ft": sq_ft,
             "Facing": facing,
-            "New/Resale": new,
             "Property URL" : scraped_urls
         })
 
@@ -123,12 +122,17 @@ if search_button:
         st.dataframe(property_data)
 
         # Ask user for Excel file name
-        excel_file_name = st.text_input("Enter the Excel file name (without extension):", value="property_values")
+        # Ask user for Excel file name
+excel_file_name = st.text_input("Enter the Excel file name (without extension):", value="property_values")
 
-        # Save DataFrame to Excel if Excel button is clicked
-        if st.button("Save as Excel"):
-            excel_file_path = f"{excel_file_name}.xlsx"
-            property_data.to_excel(excel_file_path, index=False)
-            st.success(f"Property values saved to {excel_file_path}!")
+# Save DataFrame to Excel if Excel button is clicked
+if st.button("Save as Excel"):
+    excel_file_path = f"{excel_file_name}.xlsx"
+    try:
+        property_data.to_excel(excel_file_path, index=False)
+        st.success(f"Property values saved to {excel_file_path}!")
+    except Exception as e:
+        st.error(f"Error occurred while saving the Excel file: {e}")
+
     else:
         st.warning("No URLs were scraped.")
