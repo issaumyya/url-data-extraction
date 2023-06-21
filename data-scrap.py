@@ -121,17 +121,16 @@ if search_button:
         # Display property values
         st.dataframe(property_data)
 
-        # Ask user for Excel file name
-        # Ask user for Excel file name
-        excel_file_name = st.text_input("Enter the Excel file name (without extension):", value="property_values")
-         # Save DataFrame to Excel if Excel button is clicked
-        if st.button("Save as Excel"):
-            excel_file_path = f"{excel_file_name}.xlsx"
-        try:
-            property_data.to_excel(excel_file_path, index=False)
-            st.success(f"Property values saved to {excel_file_path}!")
-        except Exception as e:
-            st.error(f"Error occurred while saving the Excel file: {e}")
+        if property_data:
+            excel_file_name = st.text_input("Enter the Excel file name (without extension):")
+            # Save DataFrame to Excel if Excel button is clicked
+            if st.button("Save as Excel"):
+                excel_file_path = f"{excel_file_name}.xlsx"
+                try:
+                    property_data.to_excel(excel_file_path, index=False)
+                    st.success(f"Property values saved to {excel_file_path}!")
+                except Exception as e:
+                    st.error(f"Error occurred while saving the Excel file: {e}")
             
     else:
         st.warning("No URLs were scraped.")
