@@ -23,20 +23,19 @@ st.title("Property Values from Custom URL")
 st.write("Enter a custom URL from makaan.com to scrape property values:")
 
 def search_on_makaan(query):
-    # Create the search URL based on the query
-    search_url = f"https://www.makaan.com/pune-residential-property/buy-property-in-{query}-city"
+    query = query.replace(" ", "-").lower()  # Convert spaces to hyphens and lowercase the query
+    search_url = f"https://www.makaan.com/{query}-property"
     return search_url
 
 # Create a search bar in the Streamlit app
-search_query = st.text_input("Enter your search query for Makaan.com")
+q = st.text_input("Enter your search query for Makaan.com")
 
 # Create a button to trigger the search action
 search_button = st.button("Search")
 
 # Check if the search button is clicked and perform the search action
 if search_button:
-    c = search_on_makaan(search_query)
-    print(c)
+    c = search_on_makaan(q)
     scraped_urls = scrape_url(c)
     if scraped_urls:
         st.subheader("Property Values:")
