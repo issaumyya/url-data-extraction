@@ -121,7 +121,6 @@ if search_button:
         # Display property values
         st.dataframe(property_data)
 
-        if property_data:
             excel_file_name = st.text_input("Enter the Excel file name (without extension):")
             # Save DataFrame to Excel if Excel button is clicked
             if st.button("Save as Excel"):
