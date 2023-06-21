@@ -23,7 +23,7 @@ st.title("Extract Latest Real Estate!")
 
 def search_on_makaan(query):
     query = query.lower().replace(" ", "-")  # Convert spaces to hyphens and lowercase the query
-    search_url = f"https://www.makaan.com/listings?sortBy=date-desc&listingType=buy/{query}residential-property/buy-property-in-{query}city"
+    #search_url = f"https://www.makaan.com/listings?sortBy=date-desc&listingType=buy/{query}residential-property/buy-property-in-{query}city"
     st.write("Search URL:", search_url)  # Add this line for debugging
     return search_url
 
@@ -110,6 +110,7 @@ if search_button:
             age_of_property.append(age.text if age else np.nan)
 
         property_data = pd.DataFrame({
+            "Locality": sub_loc,
             "Bedroom": bedroom,
             "Sq Ft": sq_ft,
             "New/Resale": new,
@@ -123,7 +124,6 @@ if search_button:
             "Booking Amount": booking_amt,
             "Floor No": floor_no,
             "Construction Status": construction_status,
-            "Sub Loc": sub_loc,
             "Age of Property": age_of_property
         })
 
