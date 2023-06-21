@@ -23,8 +23,8 @@ st.title("Extract Latest Real Estate!")
 
 def search_on_makaan(query):
     query = query.lower().replace(" ", "-")  # Convert spaces to hyphens and lowercase the query
-    #search_url = f"https://www.makaan.com/listings?sortBy=date-desc&listingType=buy/{query}residential-property/buy-property-in-{query}city"
-    st.write("Search URL:", search_url)  # Add this line for debugging
+    search_url = f"https://www.makaan.com/listings?sortBy=date-desc&listingType=buy/{query}residential-property/buy-property-in-{query}city"
+    #st.write("Search URL:", search_url)  # Add this line for debugging
     return search_url
 
 # Create a search bar in the Streamlit app
