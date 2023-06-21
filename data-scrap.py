@@ -29,7 +29,6 @@ def search_on_makaan(query):
 
     # Open the search URL in a new tab
     webbrowser.open_new_tab(search_url)
-    return search_url
 
 # Create a search bar in the Streamlit app
 search_query = st.text_input("Enter your search query for Makaan.com")
