@@ -21,14 +21,11 @@ st.set_page_config(
 )
 st.title("Property Values from Custom URL")
 st.write("Enter a custom URL from makaan.com to scrape property values:")
-import webbrowser
 
 def search_on_makaan(query):
     # Create the search URL based on the query
     search_url = f"https://www.makaan.com/search?city=&page=1&searchType=QS&search={query}"
-
-    # Open the search URL in a new tab
-    webbrowser.open_new_tab(search_url)
+    return search_url
 
 # Create a search bar in the Streamlit app
 search_query = st.text_input("Enter your search query for Makaan.com")
@@ -40,7 +37,7 @@ search_button = st.button("Search")
 if search_button:
     custom_url = search_on_makaan(search_query)
     # Scrape the URLs
-    scraped_urls = scrape_url(search_url)
+    scraped_urls = scrape_url(custom_url)
 
     if scraped_urls:
         # Print property values for the first 100 entries
