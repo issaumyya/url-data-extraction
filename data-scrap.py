@@ -131,8 +131,8 @@ if search_button:
                 st.success(f"Property values saved to {excel_file_path}!")
             except Exception as e:
                 st.error(f"Error occurred while saving the Excel file: {e}")
-else:
-    st.warning("No URLs were scraped.")
+        else:
+            st.warning("No URLs were scraped.")
             
     else:
         st.warning("No URLs were scraped.")
