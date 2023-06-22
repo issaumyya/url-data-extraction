@@ -3,7 +3,7 @@ import geopandas as gpd
 import leafmap.foliumap as leafmap
 
 # Load the Mumbai population density data as a GeoDataFrame
-data_url = "https://example.com/mumbai_population_density.geojson"
+data_url = "gadm41_IND_1.json"
 mumbai_pop_density = gpd.read_file(data_url)
 
 # Define the address and coordinates of HDB branches in Mumbai
