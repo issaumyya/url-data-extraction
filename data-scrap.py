@@ -124,16 +124,17 @@ if search_button:
 
         excel_file_name = st.text_input("Enter the Excel file name (without extension):", value="property_values")
         if st.button("Save as Excel"):
-            try:
-                #"C:/Users/Saumya/Desktop/HDB-Internship" = os.getcwd()
-                excel_file_path = os.path.join("C:/Users/Saumya/Desktop/HDB-Internship", f"{excel_file_name}.xlsx")
-                property_data.to_excel(excel_file_path, index=False)
-                st.success(f"Property values saved to {excel_file_path}!")
-            except Exception as e:
-                st.error(f"Error occurred while saving the Excel file: {e}")
-        else:
-            st.warning("No URLs were scraped.")
+            excel_file_path = f"{excel_file_name}.xlsx"
+            df.to_excel(excel_file_path, index=False)
+            st.success(f"Property values saved to {excel_file_path}!")
+            def get_excel_download_link():
+                with open(excel_file_path, 'rb') as file:
+                    excel_data = file.read()
+                    b64 = base64.b64encode(excel_data).decode()
+                    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="{excel_file_name}.xlsx">Download Excel file</a>'
+                return href
+            st.markdown(get_excel_download_link(), unsafe_allow_html=True)
             
     else:
         st.warning("No URLs were scraped.")
-#C:\Users\Saumya\Desktop\HDB-Internship
+
