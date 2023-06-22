@@ -125,8 +125,8 @@ if search_button:
         excel_file_name = st.text_input("Enter the Excel file name (without extension):", value="property_values")
         if st.button("Save as Excel"):
             try:
-                C:\Users\Saumya\Desktop\HDB-Internship = os.getcwd()
-                excel_file_path = os.path.join(C:\Users\Saumya\Desktop\HDB-Internship, f"{excel_file_name}.xlsx")
+                "C:\Users\Saumya\Desktop\HDB-Internship" = os.getcwd()
+                excel_file_path = os.path.join("C:\Users\Saumya\Desktop\HDB-Internship", f"{excel_file_name}.xlsx")
                 property_data.to_excel(excel_file_path, index=False)
                 st.success(f"Property values saved to {excel_file_path}!")
             except Exception as e:
