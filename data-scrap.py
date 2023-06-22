@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
+import os
 
 def scrape_url(custom_url):
     urll = []
@@ -121,15 +122,18 @@ if search_button:
         # Display property values
         st.dataframe(property_data)
 
-        excel_file_name = st.text_input("Enter the Excel file name (without extension):")
-        # Save DataFrame to Excel if Excel button is clicked
+        excel_file_name = st.text_input("Enter the Excel file name (without extension):", value="property_values")
         if st.button("Save as Excel"):
-          excel_file_path = f"{excel_file_name}.xlsx"
-          try:
-            property_data.to_excel(excel_file_path, index=False)
-            st.success(f"Property values saved to {excel_file_path}!")
-          except Exception as e:
-            st.error(f"Error occurred while saving the Excel file: {e}")
+            try:
+                C:\Users\Saumya\Desktop\HDB-Internship = os.getcwd()
+                excel_file_path = os.path.join(C:\Users\Saumya\Desktop\HDB-Internship, f"{excel_file_name}.xlsx")
+                property_data.to_excel(excel_file_path, index=False)
+                st.success(f"Property values saved to {excel_file_path}!")
+            except Exception as e:
+                st.error(f"Error occurred while saving the Excel file: {e}")
+else:
+    st.warning("No URLs were scraped.")
             
     else:
         st.warning("No URLs were scraped.")
+#C:\Users\Saumya\Desktop\HDB-Internship
